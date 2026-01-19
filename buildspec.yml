@@ -16,6 +16,7 @@ phases:
   build:
     commands:
       - echo Running unit tests with pytest...
+      - mkdir -p reports
       - python -m pytest --junitxml=reports/results.xml --tb=short
 
   post_build:
