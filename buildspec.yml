@@ -6,21 +6,21 @@ phases:
       python: 3.8
     commands:
       - echo Installing dependencies
-      - pip install -r requirements.txt
+      - python -m pip install --upgrade pip
+      - python -m pip install -r requirements.txt
 
   pre_build:
     commands:
-      - echo start prebuild and end it
+      - echo Starting pre-build step
 
   build:
     commands:
-      - echo Running unit test with pytest...
-      - mkdir -p reports
-      - pytest --junitxml=reports/results.xml --tb=short
+      - echo Running unit tests with pytest...
+      - python -m pytest --junitxml=reports/results.xml --tb=short
 
   post_build:
     commands:
-      - echo Build complet successfully
+      - echo Build completed successfully
 
 artifacts:
   files:
