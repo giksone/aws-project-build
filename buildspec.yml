@@ -6,8 +6,9 @@ phases:
       python: 3.8
     commands:
       - echo Installing dependencies
-      - python -m pip install --upgrade pip
+      - python -m pip install --upgrade pip setuptools wheel
       - python -m pip install -r requirements.txt
+      - python -m pip install pytest pytest-cov  # garantit que pytest est disponible
 
   pre_build:
     commands:
@@ -16,7 +17,7 @@ phases:
   build:
     commands:
       - echo Running unit tests with pytest...
-      - mkdir -p reports
+      - mkdir -p reports                       # assure que le dossier existe
       - python -m pytest --junitxml=reports/results.xml --tb=short
 
   post_build:
